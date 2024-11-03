@@ -26,7 +26,7 @@ f <- function(x) { -x^3 - x^2 + 2*x + 1 }
 
 
 # Run the code: 
-output <- animate_riemann_sum(f, pars, version = 4)
+output <- animate_riemann_sum(f, pars, version = 1)
 output$df
 
 animate_riemann_sum <- function(f, pars, version){
@@ -69,7 +69,7 @@ animate_riemann_sum <- function(f, pars, version){
       geom_line() +
       geom_rect(aes(xmin = x, xmax = x + (b - a) / n, ymin = 0, ymax = y), fill = 'blue', color = "blue", alpha = 0.2) +
       labs(title = "Riemann Sum Approximation", 
-           subtitle = "Cos(x)", 
+           subtitle = "", 
            x = "x", y = "f(x)") +
       transition_manual(group, cumulative = TRUE) + 
       theme_minimal() + 
