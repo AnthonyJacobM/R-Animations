@@ -1,6 +1,30 @@
 library(ggplot2)
 library(deSolve)
 
+
+# Define the Lorenz system
+lorenz <- function(t, state, parameters) {
+  x = state[[1]]
+  y = state[[2]]
+  z = state[[3]]
+  sigma = parameters[[1]] 
+  rho = parameters[[2]]
+  beta = parameters[[3]]
+  
+  dx <- sigma*(y - x)
+  dy <- x*(rho - z) - y
+  dz <- x*y - beta*z
+  list(c(dx, dy, dz))
+}
+
+# Set the parameters
+sigma <- 10
+rho <- 22 # 13, 14, 15, 28 
+beta <- 8/3
+
+# Solve the Lorenz system
+times <- seq(0, 40, by = 0.02)
+
 # Assuming you have a list of initial conditions
 initial_conditions <- list(c(1, 0, 0), c(-1, 0, 0), c(0, 1, 1), c(0, -1, 1), c(0, 1, -1), c(0, -1, -1))
 
